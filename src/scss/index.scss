@@ -2,5 +2,7 @@
 @use 'base';
 @use './modules/header.scss';
 @use './modules/hero.scss';
+@use './modules/filter.scss';
+@use './modules/choices.scss';
 
 @import 'normalize.css';
