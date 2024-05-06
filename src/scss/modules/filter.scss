@@ -135,16 +135,16 @@
   &__type-button {
     white-space: nowrap;
 
-    // &:focus,
-    // &:hover,
-    // &:active {
-    //   color: $orange;
-    // }
-    @at-root {
-      :is(:focus, :hover, :active) {
-        color: $orange;
-      }
+    &:focus,
+    &:hover,
+    &:active {
+      color: $orange;
     }
+    // @at-root {
+    //   :is(:focus, :hover, :active) {
+    //     color: $orange;
+    //   }
+    // }
     
   }
 }
