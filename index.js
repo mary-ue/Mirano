@@ -55,6 +55,14 @@ choices.forEach((choice) => {
   btn.addEventListener('click', () => {
     box.classList.toggle('choices__box_open');
 
+    choices.forEach((otherChoice) => {
+      if (otherChoice !== choice) {
+        otherChoice
+          .querySelector('.choices__box')
+          .classList.remove('choices__box_open');
+      }
+    });
+
     adjustElementPosition(box);
   });
 
