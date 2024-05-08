@@ -1,25 +1,8 @@
 import '@/scss/index.scss';
+import {initHeaderFixer} from '@/scripts/headerFixer';
 
-const header = document.querySelector('.header');
-const body = document.body;
-let headerHeight = header.offsetHeight;
 
-/* sticky header */
-window.addEventListener('resize', () => {
-  headerHeight = header.offsetHeight;
-});
 
-window.addEventListener('scroll', () => {
-  const scrollDistance = window.scrollY;
-
-  if (scrollDistance > 200) {
-    header.classList.add('header_fixed');
-    body.style.paddingTop = `${headerHeight}px`;
-  } else {
-    header.classList.remove('header_fixed');
-    body.style.paddingTop = '0';
-  }
-});
 
 /* filters */
 const adjustElementPosition = (element, count = 0) => {
@@ -83,3 +66,10 @@ headerCartButton.addEventListener('click', () => {
 cartClose.addEventListener('click', () => {
   cart.classList.remove('cart_open');
 });
+
+const init = () => {
+  initHeaderFixer();
+
+}
+
+init();
