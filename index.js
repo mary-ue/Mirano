@@ -70,3 +70,16 @@ choices.forEach((choice) => {
     adjustElementPosition(box);
   });
 });
+
+// open and close cart
+const headerCartButton = document.querySelector('.header__cart-button');
+const cartClose = document.querySelector('.cart__close');
+const cart = document.querySelector('.cart');
+
+headerCartButton.addEventListener('click', () => {
+  cart.classList.toggle('cart_open');
+});
+
+cartClose.addEventListener('click', () => {
+  cart.classList.remove('cart_open');
+});

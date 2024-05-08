@@ -3,12 +3,46 @@
 
 .cart {
   padding-top: 100px;
+  align-self: start;
+  display: none;
+
+  &_open {
+    display: flex;
+  }
+
+  @media (max-width: 1360px) {
+    padding: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  @include mobile {
+    height: auto;
+    right: 14px;
+  }
 
   &__container {
     padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
     max-width: 310px;
+    min-height: 778px;
     background-color: $white;
     border-radius: 32px;
+
+    @media (max-width: 1360px) {
+      height: 100%;
+    }
+
+    @include mobile {
+      min-height: auto;
+      max-width: 292px;
+    }
   }
 
   &__header {
@@ -28,7 +62,7 @@
 
   &__date-delivery {
     padding-left: 20px;
-    padding-bottom: 16px;
+    margin-bottom: 16px;
     background-image: url('/img/delivery.svg');
     background-repeat: no-repeat;
     background-position: left bottom;
@@ -40,6 +74,8 @@
   }
 
   &__list {
+    margin-bottom: 24px;
+    flex-grow: 1;
   }
 
   &__item {
@@ -48,25 +84,61 @@
     grid-template-columns: 54px 1fr min-content;
     grid-template-areas: "image title title" "image counter price";
     gap: 8px 12px;
+    align-items: center;
     border-bottom: 1px solid rgba($dark, .04);
+
+    &:last-child {
+      border-bottom-color: transparent;
+    }
   }
 
   &__img {
     grid-area: image;
+    align-self: start;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    object-fit: cover;
   }
 
   &__item-title {
     grid-area: title;
+    font-weight: 400;
+    font-size: 14px;
   }
 
   &__counter {
     grid-area: counter;
+    display: flex;
+    gap: 4px;
   }
 
   &__counter-btn {
+    width: 29px;
+    height: 29px;
+    border-radius: 6px;
+    background-color: $bg;
+    font-size: 14px;
   }
 
   &__counter-input {
+    width: 22px;
+    padding: 0;
+    font-size: 14px;
+    border: 0;
+    background-color: transparent;
+    text-align: center;
+    outline: 1px solid transparent;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      appearance: none;
+    }
+
+    &:focus-visible {
+      outline-color: $dark;
+    }
   }
 
   &__price {
@@ -74,8 +146,15 @@
   }
 
   &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__order-btn {
+    padding: 9px 16px 8px 16px;
+    border-radius: 32px;
+    background-color: $light-orange;
+    color: $white;
   }
 }

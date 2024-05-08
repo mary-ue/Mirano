@@ -113,6 +113,12 @@
     padding: 24px;
     background-color: $white;
     border-radius: 12px;
+
+    &_type {
+      @include laptop {
+        padding: 16px;
+      }
+    }
   }
 
   &__input-price {
@@ -122,14 +128,22 @@
     height: 40px;
     background-color: $bg;
     border: none;
+
+    @include mobile {
+      width: 80px;
+    }
   }
 
   &__type-list {
+
   }
 
   &__type-item {
+    margin-bottom: 8px;
 
-
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__type-button {
@@ -138,13 +152,17 @@
     &:focus,
     &:hover,
     &:active {
-      color: $orange;
+      color: $light-orange;
     }
     // @at-root {
     //   :is(:focus, :hover, :active) {
     //     color: $orange;
     //   }
     // }
+
+    &_active {
+      color: $orange;
+    }
     
   }
 }
