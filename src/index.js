@@ -11,7 +11,7 @@ const init = () => {
   initChoices();
   initChoicesType();
   initCart();
-  fetchProducts({ type: 'toys'});
+  fetchProducts({ type: 'bouquets'});
   renderProducts();
 }
 
