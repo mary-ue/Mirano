@@ -1,14 +1,18 @@
+import { ListType } from "./ListType";
 import { store } from "./Store";
 
 export const initChoicesType = () => {
   const typeChoies = document.querySelector('.filter__choices_type');
+  const choicesBox = document.querySelector('.filter__choices-box_type');
 
   const updateTypeChoicesVisibility = () => {
-    const category = store.getCategories();
+    const categories = store.getCategories();
 
-    if (category.size) {
+    if (categories.size) {
       typeChoies.style.display = '';
-      // !todo обновить категории
+      choicesBox.textContent = '';
+      const listType = ListType([...categories]);
+      choicesBox.append(listType);
     } else {
       typeChoies.style.display = 'none';
     }
