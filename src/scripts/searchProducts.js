@@ -1,6 +1,8 @@
 import { fetchProducts } from "./api";
+import { callBackWithPreload } from "./preload";
 
 export const initSearchProducts = () => {
+  const goodsSection = document.querySelector('.goods');
   const headerForm = document.querySelector('.header__form');
   const goodsTitle = document.querySelector('.goods__title');
 
@@ -13,7 +15,7 @@ export const initSearchProducts = () => {
 
     if (searchQuery) {
       goodsTitle.textContent = 'Результат поиска';
-      fetchProducts({ search: searchQuery });
+      callBackWithPreload(goodsSection, fetchProducts, { search: searchQuery });
     }
   })
 }
