@@ -1,6 +1,5 @@
 import { debounce } from './debounce';
 
-/* filters */
 const adjustElementPosition = (element, count = 0) => {
   const rect = element.getBoundingClientRect();
   const viewportWidth = window.innerWidth;
@@ -20,6 +19,7 @@ const adjustElementPosition = (element, count = 0) => {
   }
 
   const postRect = element.getBoundingClientRect();
+
   if ((postRect.left < 0 || postRect.right > viewportWidth) && count < 3) {
     count++;
     adjustElementPosition(element, count);
@@ -38,6 +38,7 @@ export const initChoices = () => {
           .querySelector('.choices__box')
           .classList.remove('choices__box_open');
       });
+
       document.removeEventListener('click', closeAllChoices);
     }
   };

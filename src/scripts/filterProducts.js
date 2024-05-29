@@ -1,6 +1,6 @@
-import { fetchProducts } from './api';
 import { debounce } from './debounce';
 import { callBackWithPreload } from './preload';
+import { productStore } from './Store';
 
 export const filterProducts = () => {
   const filterForm = document.querySelector('.filter__form');
@@ -14,36 +14,26 @@ export const filterProducts = () => {
     const maxPrice = formData.get('maxPrice');
     const params = {};
 
-    if (type) {
-      params.type = type;
-    }
-
-    if (minPrice) {
-      params.minPrice = minPrice;
-    }
-
-    if (maxPrice) {
-      params.maxPrice = maxPrice;
-    }
-
-    callBackWithPreload(goodsSection, fetchProducts, params);
+    if (type) params.type = type;
+    if (minPrice) params.minPrice = minPrice;
+    if (maxPrice) params.maxPrice = maxPrice;
+    callBackWithPreload(goodsSection, productStore.fetchProducts(), params);
   };
 
   applyFilters();
 
-  const applyPriceFilters = debounce(applyFilters, 300);
+  const applyPriceFilters = debounce(applyFilters, 500);
 
-  filterForm.addEventListener('input', (evt) => {
-    const target = evt.target;
+  filterForm.addEventListener('input', (event) => {
+    const target = event.target;
 
     if (target.name === 'type') {
       goodsTitle.textContent = target.labels[0].textContent;
-
-      filterForm.maxPrice.value = '';
       filterForm.minPrice.value = '';
+      filterForm.maxPrice.value = '';
       applyFilters();
       return;
-    } 
+    }
 
     if (target.name === 'minPrice' || target.name === 'maxPrice') {
       applyPriceFilters();

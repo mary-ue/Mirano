@@ -1,14 +1,13 @@
 import { ProductCard } from './ProductCard';
-import { store } from './Store';
+import { productStore } from './Store';
 
 export const renderProducts = async () => {
   const goodsList = document.querySelector('.goods__list');
   const updateList = () => {
-    const products = store.getProducts();
-
+    const products = productStore.products;
     goodsList.innerHTML = '';
-
-    if (!products.length) {
+    console.log(productStore.loading);
+    if (products.length === 0 && !productStore.loading) {
       const messageItem = document.createElement('li');
       messageItem.textContent = 'Товары не найдены';
       messageItem.classList.add('goods__no-product');
@@ -22,6 +21,6 @@ export const renderProducts = async () => {
     });
   };
 
-  store.subscribe(updateList);
+  productStore.subscribe(updateList);
   updateList();
 };

@@ -3,10 +3,10 @@ import {initHeaderFixer} from '@/scripts/headerFixer';
 import { initChoices } from './scripts/choices';
 import { initCart } from './scripts/cart';
 import { renderProducts } from './scripts/renderProducts';
-import { fetchProducts } from './scripts/api';
 import { initChoicesType } from './scripts/choicesType';
 import { filterProducts } from './scripts/filterProducts';
 import { initSearchProducts } from './scripts/searchProducts';
+import { initOrder } from './scripts/orderController';
 
 const init = () => {
   initHeaderFixer();
@@ -16,6 +16,7 @@ const init = () => {
   initSearchProducts();
   renderProducts();
   filterProducts();
+  initOrder();
 }
 
 init();

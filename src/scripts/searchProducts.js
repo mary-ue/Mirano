@@ -1,13 +1,13 @@
-import { fetchProducts } from "./api";
-import { callBackWithPreload } from "./preload";
+import { callBackWithPreload } from './preload';
+import { productStore } from './Store';
 
 export const initSearchProducts = () => {
-  const goodsSection = document.querySelector('.goods');
   const headerForm = document.querySelector('.header__form');
+  const goodsSection = document.querySelector('.goods');
   const goodsTitle = document.querySelector('.goods__title');
 
-  headerForm.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+  headerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
     const formData = new FormData(headerForm);
 
@@ -15,7 +15,9 @@ export const initSearchProducts = () => {
 
     if (searchQuery) {
       goodsTitle.textContent = 'Результат поиска';
-      callBackWithPreload(goodsSection, fetchProducts, { search: searchQuery });
+      callBackWithPreload(goodsSection, productStore.fetchProducts(), {
+        search: searchQuery,
+      });
     }
-  })
-}
+  });
+};

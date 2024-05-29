@@ -30,7 +30,8 @@
     padding: 24px 16px;
     display: flex;
     flex-direction: column;
-    max-width: 310px;
+    width: 310px;
+    max-width: 100%;
     min-height: 778px;
     background-color: $white;
     border-radius: 32px;
@@ -40,8 +41,8 @@
     }
 
     @include mobile {
-      min-height: auto;
-      max-width: 292px;
+      min-height: 350px;
+      width: 292px;
     }
   }
 
